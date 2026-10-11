@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PV Mirosławice — farma fotowoltaiczna</title>
+<meta name="description" content="Farma fotowoltaiczna PV Mirosławice, obręb Mirosławice, gmina Trzebiatów. Lokalizacja i kontakt.">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<style>
+  :root {
+    --bg: #f7f8f5; --fg: #1d2420; --muted: #5b665f; --card: #ffffff;
+    --line: #dde3dc; --accent: #1f7a4d; --accent-fg: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121614; --fg: #e6ebe7; --muted: #9aa69f; --card: #1b211e;
+      --line: #2c3530; --accent: #4cc38a; --accent-fg: #0d1210;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  a { color: var(--accent); }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 16px; }
+  header { padding: 40px 0 16px; }
+  h1 { margin: 0; font-size: clamp(1.8rem, 5vw, 2.6rem); line-height: 1.15; }
+  .lead { color: var(--muted); margin: 8px 0 0; }
+  .en { color: var(--muted); font-size: .9rem; font-style: italic; margin-top: 4px; }
+  figure { margin: 24px 0; }
+  figure img { width: 100%; height: auto; display: block; border-radius: 10px; }
+  figcaption { font-size: .8rem; color: var(--muted); margin-top: 6px; }
+  section { margin: 32px 0; }
+  h2 { font-size: 1.35rem; margin: 0 0 12px; }
+  .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px 20px; }
+  .card h3 { margin: 0 0 8px; font-size: 1.05rem; }
+  dl { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 4px 12px; }
+  dt { color: var(--muted); }
+  dd { margin: 0; overflow-wrap: anywhere; }
+  #map { height: 440px; border-radius: 10px; border: 1px solid var(--line); }
+  .map-btns { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 10px; }
+  .map-btns button {
+    font: inherit; padding: 6px 14px; border-radius: 999px; cursor: pointer;
+    border: 1px solid var(--accent); background: transparent; color: var(--accent);
+  }
+  .map-btns button:hover { background: var(--accent); color: var(--accent-fg); }
+  .note { font-size: .85rem; color: var(--muted); margin-top: 8px; }
+  footer { border-top: 1px solid var(--line); margin-top: 48px; padding: 16px 0 32px; font-size: .85rem; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>PV Mirosławice</h1>
+    <p class="lead">Farma fotowoltaiczna 2 × 1 MW w obrębie Mirosławice, gmina Trzebiatów, województwo zachodniopomorskie.</p>
+    <p class="en">PV Mirosławice — a 2 × 1 MW ground-mounted solar farm near Trzebiatów, West Pomerania, Poland.</p>
+  </header>
+
+  <figure>
+    <img src="img/farma-pv.jpg" width="1920" height="1440" alt="Rzędy paneli fotowoltaicznych na łące pod błękitnym niebem">
+    <figcaption>
+      Zdjęcie poglądowe (inna farma, Kalisz Pomorski).
+      Autor: <a href="https://commons.wikimedia.org/wiki/User:JakobHosp">JakobHosp</a>,
+      <a href="https://commons.wikimedia.org/wiki/File:Farma_Fotowoltaiczna_Kalisz_Pomorski_2024.jpg">Farma Fotowoltaiczna Kalisz Pomorski 2024</a>,
+      Wikimedia Commons, licencja <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+      Zdjęcie przeskalowane do 1920 px.
+    </figcaption>
+  </figure>
+
+  <section>
+    <h2>O farmie</h2>
+    <p>
+      Dwie naziemne instalacje fotowoltaiczne po 1 MW (SPV Trzebiatów I i SPV Trzebiatów II) powstają
+      na działce ewidencyjnej nr 128/2 o powierzchni 4,48 ha w obrębie Mirosławice. Instalacje będą
+      przyłączone do sieci średniego napięcia 15 kV Enea Operator.
+    </p>
+  </section>
+
+  <section>
+    <h2>Lokalizacja</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Farma</h3>
+        <dl>
+          <dt>Działka</dt><dd>128/2, obręb Mirosławice</dd>
+          <dt>Identyfikator</dt><dd>320508_5.0016.128/2</dd>
+          <dt>Gmina</dt><dd>Trzebiatów, powiat gryficki</dd>
+          <dt>Województwo</dt><dd>zachodniopomorskie</dd>
+          <dt>Współrzędne</dt><dd>54.0476° N, 15.2922° E</dd>
+        </dl>
+      </div>
+      <div class="card">
+        <h3>Biuro (adres korespondencyjny)</h3>
+        <dl>
+          <dt>Adres</dt><dd>Podmokła 4B<br>71-776 Szczecin<br>Polska</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Mapa</h2>
+    <div class="map-btns">
+      <button type="button" data-view="farm">Farma</button>
+      <button type="button" data-view="office">Biuro w Szczecinie</button>
+      <button type="button" data-view="all">Obie lokalizacje</button>
+    </div>
+    <div id="map" role="region" aria-label="Mapa lokalizacji farmy i biura"></div>
+    <p class="note">
+      Granica działki 128/2 według danych ewidencji gruntów z usługi ULDK GUGiK.
+      Podkład mapy © współtwórcy OpenStreetMap.
+    </p>
+  </section>
+
+  <section>
+    <h2>Kontakt</h2>
+    <div class="card">
+      <dl>
+        <dt>E-mail</dt><dd><a href="mailto:pv.miroslawice@gmail.com">pv.miroslawice@gmail.com</a></dd>
+        <dt>Telefon</dt><dd><a href="tel:+48913508057">+48 91 350 80 57</a></dd>
+        <dt>Adres</dt><dd>Podmokła 4B, 71-776 Szczecin, Polska</dd>
+      </dl>
+    </div>
+  </section>
+
+  <footer>
+    PV Mirosławice · Strona nie używa plików cookie ani narzędzi śledzących.
+  </footer>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>
+  const parcel = [[54.047061,15.294496],[54.048054,15.293001],[54.048250,15.292584],[54.048265,15.292551],[54.048396,15.292054],[54.048449,15.291887],[54.048698,15.291208],[54.048491,15.290368],[54.046259,15.290516],[54.046342,15.290896],[54.046495,15.291859],[54.046704,15.293018],[54.046992,15.294595],[54.047061,15.294496]];
+  const farm = [54.04757, 15.29223];
+  const office = [53.468334, 14.544869];
+
+  const map = L.map('map', { scrollWheelZoom: false });
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+
+  const boundary = L.polygon(parcel, { color: '#1f7a4d', weight: 3, fillOpacity: 0.2 })
+    .addTo(map).bindPopup('Działka 128/2, obręb Mirosławice (4,48 ha)');
+  L.marker(farm).addTo(map).bindPopup('<b>Farma PV Mirosławice</b><br>54.0476° N, 15.2922° E');
+  L.marker(office).addTo(map).bindPopup('<b>Biuro</b><br>Podmokła 4B, 71-776 Szczecin');
+
+  const views = {
+    farm: () => map.fitBounds(boundary.getBounds(), { padding: [40, 40] }),
+    office: () => map.setView(office, 16),
+    all: () => map.fitBounds(L.latLngBounds([farm, office]), { padding: [40, 40] })
+  };
+  views.farm();
+  document.querySelectorAll('[data-view]').forEach(b =>
+    b.addEventListener('click', () => views[b.dataset.view]()));
+</script>
+</body>
+</html>
